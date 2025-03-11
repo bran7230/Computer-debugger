@@ -5,13 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Window3" Height="450" Width="800">
-    <Grid>
-        <Label Content="Enter Keyboard Macro Text Below" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="193"/>
-        <TextBox HorizontalAlignment="Left" Margin="24,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Start" HorizontalAlignment="Left" Margin="47,64,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
-        <Label Content="Record Macro, press F6 to stop" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="244"/>
-        <Button Content="Start" HorizontalAlignment="Left" Margin="290,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.843,0.829" Width="156"/>
+        Title="Macro" Height="450" Width="830"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI">
+    <Window.Resources>
+        <!-- Dark Color Palette -->
+        <SolidColorBrush x:Key="BackgroundColor" Color="#FF383838"/>
+        <SolidColorBrush x:Key="MenuBackground" Color="#FF444444"/>
+        <SolidColorBrush x:Key="AccentColor" Color="#FF2D2D2D"/>
+        <SolidColorBrush x:Key="TextColor" Color="White"/>
 
+        <!-- Basic Control Styles -->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF555555"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="179*"/>
+            <RowDefinition Height="215*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Section 1: Macro Text Input (Left Column) -->
+        <StackPanel Grid.Column="0" VerticalAlignment="Top" Margin="0,0,10,0" Grid.RowSpan="2">
+            <Label Content="Enter Spam Text Below"/>
+            <TextBox x:Name="MacroTextBox" Width="300"/>
+            <Label Content="Delay Time (Seconds)"/>
+            <TextBox x:Name="Time" Width="300"/>
+            <Label Content="End Time(Seconds)"/>
+            <TextBox x:Name="End_Time" Width="300"/>
+            <Button Content="Start" Width="90" Click="Keyboard_Click" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <!-- Section 2: Record Macro (Right Column) -->
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Label Content="Record Macro, press F6 to stop" Margin="0,0,0,10"/>
+            <Button Content="Start" Width="130" Height="30"/>
+        </StackPanel>
     </Grid>
 </Window>

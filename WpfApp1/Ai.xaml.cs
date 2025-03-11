@@ -6,7 +6,7 @@ using System.Management;
 using System.Text;
 using Microsoft.VisualBasic;
 using System.DirectoryServices;
-
+ 
 
 namespace WpfApp1
 {
