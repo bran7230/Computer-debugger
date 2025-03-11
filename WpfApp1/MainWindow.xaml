@@ -138,9 +138,6 @@
                         <Expander Header="Heat Scan" IsExpanded="False">
                             <Button Content="Heat Test" Click="Heat_Click"/>
                         </Expander>
-                        <Expander Header="Download Manager" IsExpanded="False">
-                            <Button Content="Download Manager" Click="Download_Click"/>
-                        </Expander>
                         <Expander Header="Helper" IsExpanded="False">
                             <Button Content="Helper" Click="Ai_Click"/>
                         </Expander>
