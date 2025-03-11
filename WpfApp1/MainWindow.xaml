@@ -9,9 +9,10 @@
         Height="491" 
         Width="959"
         WindowStartupLocation="CenterScreen"
-        FontFamily="Times New Roman">
+        FontFamily="Segoe UI">
 
     <Window.Resources>
+        <!-- Color Palette -->
         <SolidColorBrush x:Key="BackgroundColor" Color="#FF383838"/>
         <SolidColorBrush x:Key="MenuBackground" Color="#FF444444"/>
         <SolidColorBrush x:Key="AccentColor" Color="#FF2D2D2D"/>
@@ -19,6 +20,7 @@
         <SolidColorBrush x:Key="DataGridRowBackground" Color="#FF4C4C4C"/>
         <SolidColorBrush x:Key="DataGridRowHoverBackground" Color="#FF5C5C5C"/>
 
+        <!-- Expander Style -->
         <Style TargetType="Expander">
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
             <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
@@ -28,6 +30,7 @@
             <Setter Property="Width" Value="180"/>
         </Style>
 
+        <!-- Button Style -->
         <Style TargetType="Button">
             <Setter Property="Margin" Value="0,5"/>
             <Setter Property="Padding" Value="10,3"/>
@@ -42,6 +45,7 @@
             </Style.Triggers>
         </Style>
 
+        <!-- DataGrid Style -->
         <Style TargetType="DataGrid">
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
             <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
@@ -51,6 +55,7 @@
             <Setter Property="Padding" Value="5"/>
         </Style>
 
+        <!-- DataGrid Column Header Style -->
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
             <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
@@ -58,12 +63,14 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
 
+        <!-- DataGrid Cell Style -->
         <Style TargetType="DataGridCell">
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
             <Setter Property="Background" Value="{StaticResource DataGridRowBackground}"/>
             <Setter Property="Padding" Value="5,2,5,2"/>
         </Style>
 
+        <!-- DataGrid Row Style -->
         <Style TargetType="DataGridRow">
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
             <Setter Property="Background" Value="{StaticResource DataGridRowBackground}"/>
@@ -74,18 +81,18 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Add styles for TextBlock for consistent text coloring -->
+        <!-- TextBlock Style -->
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
         </Style>
 
-        <!-- Add styles for ScrollViewer for a consistent scrollbar look -->
+        <!-- ScrollViewer Style -->
         <Style TargetType="ScrollViewer">
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
             <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
         </Style>
 
-        <!-- Add styles for Border for a consistent border look -->
+        <!-- Border Style -->
         <Style TargetType="Border">
             <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
             <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
@@ -109,27 +116,22 @@
                 <!-- Header -->
                 <TextBlock DockPanel.Dock="Top"
                            Text="MAIN MENU"
-                           Foreground="{StaticResource TextColor}"
                            FontSize="16"
                            FontWeight="Bold"
                            Padding="10"
                            HorizontalAlignment="Center"/>
-
                 <!-- Menu Items -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <Expander Header="System Scan" IsExpanded="False">
                             <Button Content="System Int Scan" Click="Button_Click"/>
                         </Expander>
-
                         <Expander Header="RAM Scan" IsExpanded="False">
                             <Button Content="RAM Test" Click="Macro_Click"/>
                         </Expander>
-
                         <Expander Header="Network Scan" IsExpanded="False">
                             <Button Content="Network Test" Click="Internet_Click"/>
                         </Expander>
-
                         <Expander Header="File Scan" IsExpanded="False">
                             <Button Content="File Test" Click="File_Click"/>
                         </Expander>
@@ -139,22 +141,22 @@
                         <Expander Header="Download Manager" IsExpanded="False">
                             <Button Content="Download Manager" Click="Download_Click"/>
                         </Expander>
-                        <Expander Header="AI" IsExpanded="False">
-                            <Button Content="AI" Click="Ai_Click"/>
+                        <Expander Header="Helper" IsExpanded="False">
+                            <Button Content="Helper" Click="Ai_Click"/>
                         </Expander>
                         <Expander Header="Macro" IsExpanded="False">
                             <Button Content="Macro" Click="Macro_Click_1"/>
                         </Expander>
-                      
                     </StackPanel>
                 </ScrollViewer>
             </DockPanel>
         </Border>
 
         <!-- Content Area -->
-        <Border Grid.Column="1" Padding="20">
-            <!-- Add your main content here -->
-            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding}">
+        <Border Grid.Column="1" Padding="20" CornerRadius="4" Background="{StaticResource BackgroundColor}">
+            <!-- Main Content: DataGrid -->
+            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Process Name" Binding="{Binding Process}" Width="*" MinWidth="200"/>
                     <DataGridTextColumn Header="Memory Usage (MB)" Binding="{Binding Usage}" Width="150"/>
