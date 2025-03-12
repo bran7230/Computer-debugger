@@ -98,7 +98,9 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+        <ListBox x:Name="listBox" Grid.Column="1" Margin="70,62,70,62"/>
+        <Button Grid.Column="1" Content="Test" HorizontalAlignment="Left" Margin="70,23,0,0" VerticalAlignment="Top" Click="button_Click"/>
+
     </Grid>
 
 
