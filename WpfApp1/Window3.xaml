@@ -8,7 +8,7 @@
         Title="Macro" Height="450" Width="830"
         WindowStartupLocation="CenterScreen"
         FontFamily="Segoe UI">
-    
+
     <Window.Resources>
         <!-- Dark Color Palette -->
         <SolidColorBrush x:Key="BackgroundColor" Color="#FF383838"/>
