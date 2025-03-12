@@ -9,99 +9,61 @@
         Height="491" 
         Width="959"
         WindowStartupLocation="CenterScreen"
-        FontFamily="Times New Roman">
-
+        FontFamily="Segoe UI">
     <Window.Resources>
+        <!-- Dark Color Palette -->
         <SolidColorBrush x:Key="BackgroundColor" Color="#FF383838"/>
         <SolidColorBrush x:Key="MenuBackground" Color="#FF444444"/>
         <SolidColorBrush x:Key="AccentColor" Color="#FF2D2D2D"/>
         <SolidColorBrush x:Key="TextColor" Color="White"/>
-        <SolidColorBrush x:Key="DataGridRowBackground" Color="#FF4C4C4C"/>
-        <SolidColorBrush x:Key="DataGridRowHoverBackground" Color="#FF5C5C5C"/>
 
-        <Style TargetType="Expander">
+        <!-- Flat Button Style matching the background -->
+        <Style x:Key="FlatButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
             <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="5,3"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="Width" Value="180"/>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="0,5"/>
-            <Setter Property="Padding" Value="10,3"/>
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
-            <Setter Property="BorderBrush" Value="#FF606060"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF555555"/>
+                    <Setter Property="Background" Value="#FF2C2C2C"/>
                     <Setter Property="Cursor" Value="Hand"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
-
-        <Style TargetType="DataGrid">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
-            <Setter Property="RowBackground" Value="{StaticResource DataGridRowBackground}"/>
-            <Setter Property="AlternatingRowBackground" Value="{StaticResource AccentColor}"/>
-            <Setter Property="Padding" Value="5"/>
-        </Style>
-
-        <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-
-        <Style TargetType="DataGridCell">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Background" Value="{StaticResource DataGridRowBackground}"/>
-            <Setter Property="Padding" Value="5,2,5,2"/>
-        </Style>
-
-        <Style TargetType="DataGridRow">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Background" Value="{StaticResource DataGridRowBackground}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource DataGridRowHoverBackground}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Add styles for TextBlock for consistent text coloring -->
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-        </Style>
-
-        <!-- Add styles for ScrollViewer for a consistent scrollbar look -->
-        <Style TargetType="ScrollViewer">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
-        </Style>
-
-        <!-- Add styles for Border for a consistent border look -->
-        <Style TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
-            <Setter Property="Padding" Value="0"/>
-        </Style>
     </Window.Resources>
 
     <Grid Background="{StaticResource BackgroundColor}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox x:Name="listBox" Grid.Column="1" Margin="70,62,70,62"/>
-        <Button Grid.Column="1" Content="Test" HorizontalAlignment="Left" Margin="70,23,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="Download Manager" 
+                   Foreground="{StaticResource TextColor}" 
+                   FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- ListBox Area with Border -->
+        <Border Grid.Row="1" Background="{StaticResource MenuBackground}" 
+                CornerRadius="4" Padding="10">
+            <ListBox x:Name="listBox" 
+                     Background="{StaticResource MenuBackground}"
+                     BorderThickness="0"
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="14"/>
+        </Border>
+
+        <!-- Footer with multiple flat buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" 
+                    HorizontalAlignment="Center" Margin="0,20,0,0">
+            <Button Content="Test" Width="100" Style="{StaticResource FlatButtonStyle}" Click="button_Click"/>
+            <Button Content="Refresh" Width="100" Style="{StaticResource FlatButtonStyle}"/>
+            <Button Content="Open" Width="100" Style="{StaticResource FlatButtonStyle}" Click="File_open_Click"/>
+            <Button Content="Delete" Width="100" Style="{StaticResource FlatButtonStyle}"/>
+        </StackPanel>
     </Grid>
-
-
 </Window>

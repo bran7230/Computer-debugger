@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,29 @@ namespace WpfApp1
           
         }
 
-     
+     private void File_open_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
+                try
+                {
+                    var processInfo = new ProcessStartInfo(filePath)
+                    {
+                        UseShellExecute = true
+                    };
+                    Process.Start(processInfo);
+                    System.Windows.MessageBox.Show("File opened successfully: " + filePath);
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show("Error opening file: " + ex.Message);
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Please select a file from the list.");
+            }
+        }
     }
 }
