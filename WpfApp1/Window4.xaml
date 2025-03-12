@@ -1,0 +1,86 @@
+﻿<Window x:Class="WpfApp1.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Details" Height="395" Width="809"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI">
+    <Window.Resources>
+        <!-- Dark Color Palette -->
+        <SolidColorBrush x:Key="BackgroundColor" Color="#FF383838"/>
+        <SolidColorBrush x:Key="MenuBackground" Color="#FF444444"/>
+        <SolidColorBrush x:Key="AccentColor" Color="#FF2D2D2D"/>
+        <SolidColorBrush x:Key="TextColor" Color="White"/>
+
+        <!-- Basic Text Styles -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="743*"/>
+            <ColumnDefinition Width="58*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="File Details" 
+                   FontSize="24" FontWeight="Bold" 
+                   Foreground="{StaticResource TextColor}" 
+                   HorizontalAlignment="Left" Margin="339,0,0,20"/>
+
+        <!-- Content Area -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- File Image -->
+            <Border Grid.Column="0" Background="{StaticResource MenuBackground}"
+                    CornerRadius="4" Padding="10" Margin="0,0,20,0">
+                <Image x:Name="Fileimage" Width="150" Stretch="Uniform" Margin="0,15,0,6" Loaded="Window_Loaded"/>
+            </Border>
+
+            <!-- File Details -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Height="354">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="File path:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock x:Name="Filepathbox" TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Size:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock x:Name="Sizebox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="29">
+                    <TextBlock Text="File Name:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock x:Name="Filenamebox" TextWrapping="Wrap"/>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="29">
+                    <TextBlock Text="Creation time:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock x:Name="Create_time" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="29">
+                    <TextBlock Text="Last access time:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock x:Name="Access_time" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="29">
+                    <TextBlock Text="Other info:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock x:Name="Other_info" TextWrapping="Wrap"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

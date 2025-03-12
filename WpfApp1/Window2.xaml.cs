@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,8 +16,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace WpfApp1
 {
+
     /// <summary>
     /// Interaction logic for Window2.xaml
     /// </summary>
@@ -48,7 +52,10 @@ namespace WpfApp1
         {
             if (listBox.SelectedItem != null)
             {
+#pragma warning disable CS8604 // Possible null reference argument.
                 string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
+                
+#pragma warning restore CS8604 // Possible null reference argument.
                 try
                 {
                     var processInfo = new ProcessStartInfo(filePath)
@@ -68,5 +75,34 @@ namespace WpfApp1
                 System.Windows.MessageBox.Show("Please select a file from the list.");
             }
         }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
+                string fileName = listBox.SelectedItem.ToString();
+                string filesize = new FileInfo(filePath).Length.ToString();
+                var FileInfo = new FileInfo(filePath);
+                DateTime createTime = FileInfo.CreationTime;
+                DateTime lastTime = FileInfo.LastWriteTime;
+                FileAttributes fileAttributes = FileInfo.Attributes;
+                // Open Window4 and pass filePath
+                Window4 window4 = new Window4();
+                window4.FilePath = filePath;
+                window4.FileName = fileName;
+                window4.filesize = filesize;
+                window4.Create_time.Text = createTime.ToString();
+                window4.Access_time.Text = lastTime.ToString();
+                window4.Other_info.Text = fileAttributes.ToString();
+
+                window4.Show();
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Please select a file from the list.");
+            }
+        }
+
     }
 }
