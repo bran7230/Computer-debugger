@@ -23,7 +23,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             _messages = new ObservableCollection<ChatMessage>();
-            MessagesListBox.ItemsSource = _messages;
+            MessagesListBox.ItemsSource = _messages;// Bind the ListBox to the collection
 
             // Add a welcome message from the AI
             _messages.Add(new ChatMessage { Sender = "AI", Text = "Hello! How can I help you today?(Type help for options)" });
@@ -93,11 +93,11 @@ namespace WpfApp1
 
             else if(input == "control panel")
             {
-                Process.Start("control.exe");
+                Process.Start("control.exe");//opens control panel
             }
 
-
-                return input switch
+            //Return a response based on the user input Switch cases, add more Future Me if you want to add more commands
+            return input switch
                 {
                     string s when s.Contains("help") => "Want to try Basic Commands(Type Basic Commands) or Advanced?",
                     string s when s.Contains("basic commands") => "Ok, Full system scan, Ram scan, Device Manager, Disk Cleanup, Temp file clean",
@@ -110,6 +110,8 @@ namespace WpfApp1
                     string s when s.Contains("temp file clean") => "Starting Temp File Cleanup...",
                     string s when s.Contains("view storage") => "Opening Storage Viewer...",
                     string s when s.Contains("control panel") => "Opening Control Panel...",
+
+                    //Default not found case
                     _ => "I'm not sure how to respond to that. Could you please rephrase? or Type Help"
                 };
 
@@ -120,7 +122,7 @@ namespace WpfApp1
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",//loads cmd
-                Arguments = "/c start ms-settings:storagesense",
+                Arguments = "/c start ms-settings:storagesense",//opens storage settings
                 Verb = "runas",//admin
                 UseShellExecute = true,
             };
@@ -161,7 +163,7 @@ namespace WpfApp1
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",//loads cmd
-                Arguments = "/c cleanmgr /sagerun:1",
+                Arguments = "/c cleanmgr /sagerun:1",//clean temp files
                 Verb = "runas",//admin
                 UseShellExecute = true,
                 WindowStyle = ProcessWindowStyle.Hidden
@@ -181,7 +183,7 @@ namespace WpfApp1
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",//loads cmd
-                Arguments = "/c cleanmgr",
+                Arguments = "/c cleanmgr",//opens disk cleanup
                 Verb = "runas",//admin
                 UseShellExecute = true,
                 WindowStyle = ProcessWindowStyle.Hidden
@@ -205,7 +207,7 @@ namespace WpfApp1
                 Arguments = "/c devmgmt.msc",//opens memory diagnostic tool
                 Verb = "runas",//admin
                 UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Hidden
+                WindowStyle = ProcessWindowStyle.Hidden//hides the window
             };
 
             try
@@ -269,8 +271,11 @@ namespace WpfApp1
     // Simple class to hold each chat message
     public class ChatMessage
     {
+        // Properties for the sender and text of the message
         public string Sender { get; set; } = string.Empty;
         public string Text { get; set; } = string.Empty;
+
+        // A read-only property to display the sender and text in the ListBox
         public string DisplayText => $"{(Sender == "AI" ? "Assistant" : "User")}: {Text}";
     }
 }
