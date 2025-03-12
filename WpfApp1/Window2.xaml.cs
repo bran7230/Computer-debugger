@@ -79,19 +79,29 @@ namespace WpfApp1
         private void Test_Click(object sender, RoutedEventArgs e)
         {
             if (listBox.SelectedItem != null)
-            {
+            {   Window4 window4 = new Window4();
                 string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
                 string fileName = listBox.SelectedItem.ToString();
-                string filesize = new FileInfo(filePath).Length.ToString();
-                var FileInfo = new FileInfo(filePath);
-                DateTime createTime = FileInfo.CreationTime;
-                DateTime lastTime = FileInfo.LastWriteTime;
-                FileAttributes fileAttributes = FileInfo.Attributes;
+                string fileSize = string.Empty;
+                try
+                {
+                    long fileSizeInBytes = new FileInfo(filePath).Length;
+                    fileSize = (fileSizeInBytes / 1000).ToString(); 
+                    window4.filesize = fileSize +" MB";
+                }
+                catch (IOException)
+                {
+                    // Handle exception
+                }
+                var fileInfo = new FileInfo(filePath);
+                DateTime createTime = fileInfo.CreationTime;
+                DateTime lastTime = fileInfo.LastWriteTime;
+                FileAttributes fileAttributes = fileInfo.Attributes;
                 // Open Window4 and pass filePath
-                Window4 window4 = new Window4();
+              
                 window4.FilePath = filePath;
                 window4.FileName = fileName;
-                window4.filesize = filesize;
+               
                 window4.Create_time.Text = createTime.ToString();
                 window4.Access_time.Text = lastTime.ToString();
                 window4.Other_info.Text = fileAttributes.ToString();
