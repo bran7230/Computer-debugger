@@ -69,11 +69,11 @@
 
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="29">
-                    <TextBlock Text="Creation time:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock Text="Creation time:" FontWeight="SemiBold" Width="116"/>
                     <TextBlock x:Name="Create_time" TextWrapping="Wrap"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="29">
-                    <TextBlock Text="Last access time:" FontWeight="SemiBold" Width="100"/>
+                    <TextBlock Text="Last access time:" FontWeight="SemiBold" Width="116"/>
                     <TextBlock x:Name="Access_time" TextWrapping="Wrap"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="29">
