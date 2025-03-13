@@ -159,18 +159,6 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            string searchText = Searchtext.Text; // Fix the error by assigning the TextBox's Text property to a string variable
-            listBox.Items.Clear();
-
-            foreach (FileInfo file in files)
-            {
-                if (file.Name.Contains(searchText))
-                {
-                    listBox.Items.Add(file.Name);
-                }
-            }
-        }
+       
     }
 }
