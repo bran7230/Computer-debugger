@@ -24,7 +24,9 @@ namespace WpfApp1
         public string FileName { get; set; }
         public string filesize { get; set; }
         public string fileimage { get; set; }
+
         public Window4()
+
         {
             InitializeComponent();
          

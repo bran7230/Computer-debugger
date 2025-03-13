@@ -100,8 +100,10 @@ namespace WpfApp1
                 // Open Window4 and pass filePath
               
                 window4.FilePath = filePath;
+#pragma warning disable CS8601 // Possible null reference assignment.
                 window4.FileName = fileName;
-               
+#pragma warning restore CS8601 // Possible null reference assignment.
+
                 window4.Create_time.Text = createTime.ToString();
                 window4.Access_time.Text = lastTime.ToString();
                 window4.Other_info.Text = fileAttributes.ToString();
