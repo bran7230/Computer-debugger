@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 
 namespace WpfApp1
@@ -40,21 +26,21 @@ namespace WpfApp1
 
         }
 
-       
+
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.MessageBox.Show(dir.FullName + "\\" + listBox.SelectedItem.ToString());
-          
+
         }
 
-     private void File_open_Click(object sender, RoutedEventArgs e)
+        private void File_open_Click(object sender, RoutedEventArgs e)
         {
             if (listBox.SelectedItem != null)
             {
 #pragma warning disable CS8604 // Possible null reference argument.
                 string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
-                
+
 #pragma warning restore CS8604 // Possible null reference argument.
                 try
                 {
@@ -79,15 +65,16 @@ namespace WpfApp1
         private void Test_Click(object sender, RoutedEventArgs e)
         {
             if (listBox.SelectedItem != null)
-            {   Window4 window4 = new Window4();
+            {
+                Window4 window4 = new Window4();
                 string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
                 string fileName = listBox.SelectedItem.ToString();
                 string fileSize = string.Empty;
                 try
                 {
                     long fileSizeInBytes = new FileInfo(filePath).Length;
-                    fileSize = (fileSizeInBytes / 1000).ToString(); 
-                    window4.filesize = fileSize +" MB";
+                    fileSize = (fileSizeInBytes / 1000).ToString();
+                    window4.filesize = fileSize + " MB";
                 }
                 catch (IOException)
                 {
@@ -98,7 +85,7 @@ namespace WpfApp1
                 DateTime lastTime = fileInfo.LastWriteTime;
                 FileAttributes fileAttributes = fileInfo.Attributes;
                 // Open Window4 and pass filePath
-              
+
                 window4.FilePath = filePath;
 #pragma warning disable CS8601 // Possible null reference assignment.
                 window4.FileName = fileName;

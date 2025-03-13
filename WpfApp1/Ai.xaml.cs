@@ -1,12 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
-using System.Management;
-using System.Text;
-using Microsoft.VisualBasic;
-using System.DirectoryServices;
- 
+
+
 
 namespace WpfApp1
 {
@@ -18,7 +15,7 @@ namespace WpfApp1
         // Observable collection to hold our chat messages
         private ObservableCollection<ChatMessage> _messages;
 
-       
+
         public Ai()
         {
             InitializeComponent();
@@ -62,58 +59,58 @@ namespace WpfApp1
                 StartFullSystemScan();
                 return "Full system scan initiated. Please wait for the results.";
             }
-            else if(input == "ram scan")
+            else if (input == "ram scan")
             {
                 ramScan(); // Call the method to start the ram scan
             }
 
             else if (input == "device manager")
             {
-                deviceManager(); 
+                deviceManager();
             }
 
-            else if(input == "disk cleanup")
+            else if (input == "disk cleanup")
             {
                 diskclean();
             }
 
-            else if(input =="temp file clean")
+            else if (input == "temp file clean")
             {
                 tempfileclean();
             }
-            else if(input == "disk manager")
-            {   
+            else if (input == "disk manager")
+            {
                 diskManage();
             }
 
-            else if(input == "view storage")
+            else if (input == "view storage")
             {
                 viewStorage();
             }
 
-            else if(input == "control panel")
+            else if (input == "control panel")
             {
                 Process.Start("control.exe");//opens control panel
             }
 
             //Return a response based on the user input Switch cases, add more Future Me if you want to add more commands
             return input switch
-                {
-                    string s when s.Contains("help") => "Want to try Basic Commands(Type Basic Commands) or Advanced?",
-                    string s when s.Contains("basic commands") => "Ok, Full system scan, Ram scan, Device Manager, Disk Cleanup, Temp file clean",
-                    string s when s.Contains("full System scan") => "Ok, I will start the scan",
-                    string s when s.Contains("thank you") => "You're welcome! Feel free to ask if you need more help.",
-                    string s when s.Contains("ram scan") => "Starting RAM scan...",
-                    string s when s.Contains("device manager") => "Opening Device Manager...",
-                    string s when s.Contains("advanced") => "View storage, Disk manager, Control panel",
-                    string s when s.Contains("disk cleanup") => "Starting Disk Cleanup...",
-                    string s when s.Contains("temp file clean") => "Starting Temp File Cleanup...",
-                    string s when s.Contains("view storage") => "Opening Storage Viewer...",
-                    string s when s.Contains("control panel") => "Opening Control Panel...",
+            {
+                string s when s.Contains("help") => "Want to try Basic Commands(Type Basic Commands) or Advanced?",
+                string s when s.Contains("basic commands") => "Ok, Full system scan, Ram scan, Device Manager, Disk Cleanup, Temp file clean",
+                string s when s.Contains("full System scan") => "Ok, I will start the scan",
+                string s when s.Contains("thank you") => "You're welcome! Feel free to ask if you need more help.",
+                string s when s.Contains("ram scan") => "Starting RAM scan...",
+                string s when s.Contains("device manager") => "Opening Device Manager...",
+                string s when s.Contains("advanced") => "View storage, Disk manager, Control panel",
+                string s when s.Contains("disk cleanup") => "Starting Disk Cleanup...",
+                string s when s.Contains("temp file clean") => "Starting Temp File Cleanup...",
+                string s when s.Contains("view storage") => "Opening Storage Viewer...",
+                string s when s.Contains("control panel") => "Opening Control Panel...",
 
-                    //Default not found case
-                    _ => "I'm not sure how to respond to that. Could you please rephrase? or Type Help"
-                };
+                //Default not found case
+                _ => "I'm not sure how to respond to that. Could you please rephrase? or Type Help"
+            };
 
 
         }
@@ -219,7 +216,7 @@ namespace WpfApp1
                 Console.WriteLine($"Error: {ex.Message}");
 
             }
-          }
+        }
 
         private void ramScan()
         {

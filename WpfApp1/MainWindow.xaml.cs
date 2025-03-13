@@ -1,17 +1,10 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using WindowsInput;
-using WindowsInput.Native;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Windows.Forms;
-using System.ComponentModel;
+﻿using Microsoft.VisualBasic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows;
 using System.Windows.Threading;
-using Microsoft.VisualBasic;
+using WindowsInput;
 
 
 
@@ -19,7 +12,7 @@ namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
-      
+
         public ObservableCollection<ProcessInfo> Processes { get; set; }
 
         InputSimulator sim = new InputSimulator();//use for keystrokes
@@ -100,7 +93,7 @@ namespace WpfApp1
 
         }
 
-     
+
 
         public void Internet_Click(object sender, RoutedEventArgs e)//shows all connected ip addresses
         {
@@ -141,7 +134,7 @@ namespace WpfApp1
 
 
             ScanFile(file);
-            
+
         }
 
         private void ScanFile(string filePath)//actual filescan
@@ -214,10 +207,10 @@ namespace WpfApp1
         //macro window
         public void Macro_Click_1(object sender, RoutedEventArgs e)
         {
-          Window3 window = new Window3();
+            Window3 window = new Window3();
             window.Show();
         }
 
-     
+
     }
 }

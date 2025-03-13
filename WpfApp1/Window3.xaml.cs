@@ -70,7 +70,7 @@ namespace WpfApp1
             {
                 System.Windows.MessageBox.Show("Recording Stopped");
                 recording = false;
-                
+
             }
 
             if (recording && macroStarted)
@@ -160,7 +160,7 @@ namespace WpfApp1
                 DispatcherTimer stopTimer = new DispatcherTimer();
 
                 // Set the interval for the spam timer for it to stop
-                stopTimer.Interval = TimeSpan.FromSeconds(spam_time); 
+                stopTimer.Interval = TimeSpan.FromSeconds(spam_time);
 
                 // Stop the spam timer after _ seconds ex 10 seconds
                 stopTimer.Tick += (s, ev) =>

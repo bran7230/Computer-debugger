@@ -1,8 +1,6 @@
-﻿using System;
+﻿using LibreHardwareMonitor.Hardware;
 using System.Collections.ObjectModel;
-using System.Timers;
 using System.Windows;
-using LibreHardwareMonitor.Hardware;
 
 
 namespace WpfApp1
