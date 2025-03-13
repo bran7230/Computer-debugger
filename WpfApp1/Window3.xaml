@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Macro" Height="450" Width="830"
+        Title="Other" Height="450" Width="830"
         WindowStartupLocation="CenterScreen"
         FontFamily="Segoe UI">
 
@@ -57,7 +57,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Section 1: Macro Text Input (Left Column) -->
-        <StackPanel Grid.Column="0" VerticalAlignment="Top" Margin="0,0,10,0" Grid.RowSpan="2">
+        <StackPanel Grid.Column="0" VerticalAlignment="Top" Margin="0,31,10,0" Grid.RowSpan="2">
             <Label Content="Enter Spam Text Below"/>
             <TextBox x:Name="MacroTextBox" Width="300"/>
             <Label Content="Delay Time (Seconds)"/>
@@ -73,5 +73,6 @@
             <Label Content="Saves to keys.txt" Width="102"/>
             <Button Content="Start" Width="130" Height="30" Click="Button_Click"/>
         </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="110,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" Foreground="White"><Run Language="en-ca" Text="Something Random, spam text"/></TextBlock>
     </Grid>
 </Window>

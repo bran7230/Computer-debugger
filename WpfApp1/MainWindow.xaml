@@ -141,11 +141,12 @@
                         <Expander Header="Helper" IsExpanded="False">
                             <Button Content="Helper" Click="Ai_Click"/>
                         </Expander>
-                        <Expander Header="Macro" IsExpanded="False">
-                            <Button Content="Macro" Click="Macro_Click_1"/>
-                        </Expander>
+                       
                         <Expander Header="Download Manager" IsExpanded="False">
                             <Button Content="Downloads" Click="Download_Click"/>
+                        </Expander> 
+                        <Expander Header="Other" IsExpanded="False">
+                            <Button Content="Other" Click="Macro_Click_1"/>
                         </Expander>
                     </StackPanel>
                 </ScrollViewer>

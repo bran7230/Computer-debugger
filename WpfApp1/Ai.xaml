@@ -60,9 +60,18 @@
 
         <!-- Display Chat Messages within a rounded border -->
         <Border Grid.Row="1" Margin="10" Background="{StaticResource MenuBackground}" CornerRadius="4">
-            <ListBox x:Name="MessagesListBox" Margin="5" 
-                     Style="{StaticResource ChatListBoxStyle}" 
-                     DisplayMemberPath="DisplayText" />
+            <ListBox x:Name="MessagesListBox" Margin="5,5,10,5" 
+         Style="{StaticResource ChatListBoxStyle}" 
+         HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayText}" TextWrapping="Wrap" 
+                       MaxWidth="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
         </Border>
 
         <!-- Input and Send Button -->
