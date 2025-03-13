@@ -48,7 +48,7 @@ namespace WpfApp1
                     FileName = "cmd.exe",//loads cmd
                     Arguments = "/c sfc /scannow",//runs system scan
                     Verb = "runas",//admin
-                    UseShellExecute = true
+                    UseShellExecute = true,
                 };
 
                 try
