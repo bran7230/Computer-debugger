@@ -52,7 +52,7 @@
                 CornerRadius="4" Padding="10">
             <ListBox x:Name="listBox" 
                      Background="{StaticResource MenuBackground}"
-                     BorderThickness="0"
+                     BorderThickness="2"
                      Foreground="{StaticResource TextColor}"
                      FontSize="14"/>
         </Border>
@@ -60,10 +60,10 @@
         <!-- Footer with multiple flat buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" 
                     HorizontalAlignment="Center" Margin="0,20,0,0">
-            <Button Content="Test" Width="100" Style="{StaticResource FlatButtonStyle}" Click="button_Click"/>
+            <Button Content="View path" Width="100" Style="{StaticResource FlatButtonStyle}" Click="button_Click"/>
             <Button Content="Details" Width="100" Style="{StaticResource FlatButtonStyle}" Click="Test_Click"/>
             <Button Content="Open" Width="100" Style="{StaticResource FlatButtonStyle}" Click="File_open_Click"/>
-            <Button Content="Delete" Width="100" Style="{StaticResource FlatButtonStyle}"/>
+            <Button Content="Delete" Width="100" Style="{StaticResource FlatButtonStyle}" Click="Delete_Click"/>
         </StackPanel>
     </Grid>
 </Window>

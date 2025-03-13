@@ -67,8 +67,12 @@ namespace WpfApp1
             if (listBox.SelectedItem != null)
             {
                 Window4 window4 = new Window4();
+#pragma warning disable CS8604 // Possible null reference argument.
                 string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 string fileName = listBox.SelectedItem.ToString();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 string fileSize = string.Empty;
                 try
                 {
@@ -103,5 +107,38 @@ namespace WpfApp1
             }
         }
 
+        public void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure you want to delete this file?", "Delete File", System.Windows.MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+#pragma warning disable CS8604 // Possible null reference argument.
+                    string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
+#pragma warning restore CS8604 // Possible null reference argument.
+                    try
+                    {
+                        File.Delete(filePath);
+                        System.Windows.MessageBox.Show("File deleted successfully: " + filePath);
+                        listBox.Items.Remove(listBox.SelectedItem);
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Windows.MessageBox.Show("Error deleting file: " + ex.Message);
+                    }
+
+                }
+
+                else
+                {
+                    System.Windows.MessageBox.Show("Delete operation cancelled.");
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Please select a file from the list.");
+            }
+        }
     }
 }
