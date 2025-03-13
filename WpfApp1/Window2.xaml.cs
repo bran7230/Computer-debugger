@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 
 namespace WpfApp1
@@ -24,8 +25,25 @@ namespace WpfApp1
                 listBox.Items.Add(file.Name);
             }
 
+            Searchtext.TextChanged += Searchtext_TextChanged;
+
         }
 
+
+
+        private void Searchtext_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = Searchtext.Text;
+            listBox.Items.Clear();
+
+            foreach (FileInfo file in files)
+            {
+                if (file.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)) // Case-insensitive search
+                {
+                    listBox.Items.Add(file.Name);
+                }
+            }
+        }
 
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -138,6 +156,20 @@ namespace WpfApp1
             else
             {
                 System.Windows.MessageBox.Show("Please select a file from the list.");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string searchText = Searchtext.Text; // Fix the error by assigning the TextBox's Text property to a string variable
+            listBox.Items.Clear();
+
+            foreach (FileInfo file in files)
+            {
+                if (file.Name.Contains(searchText))
+                {
+                    listBox.Items.Add(file.Name);
+                }
             }
         }
     }
