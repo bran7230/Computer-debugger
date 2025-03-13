@@ -69,7 +69,7 @@
 
         <!-- Section 2: Record Macro (Right Column) -->
         <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Label Content="Start Keylogger" Margin="0,0,0,10" Width="101"/>
+            <Label Content="Start Diagnostic Keylogger" Margin="0,0,0,10" Width="160"/>
             <Label Content="Saves to keys.txt" Width="102"/>
             <Button Content="Start" Width="130" Height="30" Click="Button_Click"/>
         </StackPanel>
