@@ -26,7 +26,7 @@
             <Setter Property="Background" Value="{StaticResource MenuBackground}"/>
             <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="7"/>
+            <Setter Property="Padding" Value="5"/>
             <Setter Property="Width" Value="180"/>
         </Style>
 
@@ -118,7 +118,7 @@
                            Text="MAIN MENU"
                            FontSize="16"
                            FontWeight="Bold"
-                           Padding="10"
+                           Padding="9"
                            HorizontalAlignment="Center"/>
                 <!-- Menu Items -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
