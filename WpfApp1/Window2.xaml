@@ -45,7 +45,7 @@
         <TextBlock Grid.Row="0" Text="Download Manager" 
                    Foreground="{StaticResource TextColor}" 
                    FontSize="24" FontWeight="Bold" 
-                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                   HorizontalAlignment="Left" Margin="353,9,0,11"/>
 
         <!-- ListBox Area with Border -->
         <Border Grid.Row="1" Background="{StaticResource MenuBackground}" 
@@ -65,8 +65,8 @@
             <Button Content="Open" Width="100" Style="{StaticResource FlatButtonStyle}" Click="File_open_Click"/>
             <Button Content="Delete" Width="100" Style="{StaticResource FlatButtonStyle}" Click="Delete_Click"/>
         </StackPanel>
-        <TextBox x:Name="Searchtext" HorizontalAlignment="Left" Margin="104,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FF716D6D" Foreground="#FFF3EBEB"/>
+        <TextBox x:Name="Searchtext" HorizontalAlignment="Left" Margin="93,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FF716D6D" Foreground="#FFF3EBEB"/>
         <Label Content="Enter File Name&#xD;&#xA;" HorizontalAlignment="Left" Margin="104,0,0,0" VerticalAlignment="Top" Width="120" Foreground="#FFF7EEEE" Height="26"/>
-        
+
     </Grid>
 </Window>
