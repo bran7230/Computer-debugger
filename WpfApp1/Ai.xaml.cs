@@ -170,7 +170,6 @@ namespace WpfApp1
                 FileName = "cmd.exe",//loads cmd
                 Arguments = "/c chkdsk",//opens disk check
                 Verb = "runas",//admin
-               
                 UseShellExecute = true,
             
             };
@@ -230,16 +229,15 @@ namespace WpfApp1
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
-                Arguments = "/c ipconfig /all",
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
+                Arguments = "/k ipconfig /all",
+                UseShellExecute = true,
+                Verb = "runas",
+                WindowStyle = ProcessWindowStyle.Normal
             };
             try
             {
                 var process = Process.Start(startInfo);
-                string output = process.StandardOutput.ReadToEnd();
-                _messages.Add(new ChatMessage { Sender = "AI", Text = output });
+           
             }
             catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
         }

@@ -186,5 +186,7 @@ namespace WpfApp1
             // Spam the text where the user is clicking
             sim.Keyboard.TextEntry(textOutput + " ");
         }
+
+       
     }
 }
