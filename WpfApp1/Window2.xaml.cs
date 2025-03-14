@@ -273,5 +273,6 @@ namespace WpfApp1
             string result = process.StandardOutput.ReadToEnd();
             System.Windows.MessageBox.Show(result, "Scan Results");//results of scanning
         }
+
     }
 }
