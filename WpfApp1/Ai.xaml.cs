@@ -60,7 +60,7 @@ namespace WpfApp1
             }
             else if (input == "ram scan")
             {
-                ramScan(); // Call the method to start the ram scan
+                ramScan(); 
             }
 
             else if (input == "device manager")
@@ -157,8 +157,6 @@ namespace WpfApp1
                 //Default not found case
                 _ => "I'm not sure how to respond to that. Could you please rephrase? or Type Help"
             };
-
-
         }
 
         private void diskCheck()
