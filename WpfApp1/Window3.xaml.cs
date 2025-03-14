@@ -187,6 +187,6 @@ namespace WpfApp1
             sim.Keyboard.TextEntry(textOutput + " ");
         }
 
-       
+
     }
 }

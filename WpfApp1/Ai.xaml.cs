@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 
@@ -117,48 +115,48 @@ namespace WpfApp1
                 ShowNetworkConfig();
             }
 
-            else if(input == "performance monitor")
+            else if (input == "performance monitor")
             {
                 openPerformance();
             }
 
-            else if(input == "resource monitor")
+            else if (input == "resource monitor")
             {
                 openResource();
             }
 
-            else if(input == "disk check")
+            else if (input == "disk check")
             {
                 diskCheck();
             }
 
-            
 
-                //Return a response based on the user input Switch cases, add more Future Me if you want to add more commands
-                return input switch
-                {
-                    string s when s.Contains("help") => "Want to try Basic Commands(Type Basic Commands) or Advanced?",
-                    string s when s.Contains("basic commands") => "Full system scan, Ram scan, Device Manager, Disk Cleanup, Temp file clean, System information, Performance Monitor,",
-                    string s when s.Contains("full System scan") => "Ok, I will start the scan",
-                    string s when s.Contains("thank you") => "You're welcome! Feel free to ask if you need more help.",
-                    string s when s.Contains("ram scan") => "Starting RAM scan...",
-                    string s when s.Contains("device manager") => "Opening Device Manager...",
-                    string s when s.Contains("advanced") => "View storage, Disk manager, Control panel, Event viewer, Problem reports, Directx, Ipconfig, Resource Monitor, Disk check",
-                    string s when s.Contains("disk cleanup") => "Starting Disk Cleanup...",
-                    string s when s.Contains("temp file clean") => "Starting Temp File Cleanup...",
-                    string s when s.Contains("view storage") => "Opening Storage Viewer...",
-                    string s when s.Contains("control panel") => "Opening Control Panel...",
-                    string s when s.Contains("event viewer") => "Opening Event Viewer...",
-                    string s when s.Contains("problem reports") => "Opening Problem Reports...",
-                    string s when s.Contains("system information") => "Opening System Information...",
-                    string s when s.Contains("directx") => "Opening DirectX...",
-                    string s when s.Contains("ipconfig") => "Showing Network Configuration...",
-                    string s when s.Contains("performance monitor") => "Opening Performance Monitor...",
-                    string s when s.Contains("resource monitor") => "Opening Resource Monitor...",
-                    string s when s.Contains("disk check") => "Starting Disk Check...",
-                    //Default not found case
-                    _ => "I'm not sure how to respond to that. Could you please rephrase? or Type Help"
-                };
+
+            //Return a response based on the user input Switch cases, add more Future Me if you want to add more commands
+            return input switch
+            {
+                string s when s.Contains("help") => "Want to try Basic Commands(Type Basic Commands) or Advanced?",
+                string s when s.Contains("basic commands") => "Full system scan, Ram scan, Device Manager, Disk Cleanup, Temp file clean, System information, Performance Monitor,",
+                string s when s.Contains("full System scan") => "Ok, I will start the scan",
+                string s when s.Contains("thank you") => "You're welcome! Feel free to ask if you need more help.",
+                string s when s.Contains("ram scan") => "Starting RAM scan...",
+                string s when s.Contains("device manager") => "Opening Device Manager...",
+                string s when s.Contains("advanced") => "View storage, Disk manager, Control panel, Event viewer, Problem reports, Directx, Ipconfig, Resource Monitor, Disk check",
+                string s when s.Contains("disk cleanup") => "Starting Disk Cleanup...",
+                string s when s.Contains("temp file clean") => "Starting Temp File Cleanup...",
+                string s when s.Contains("view storage") => "Opening Storage Viewer...",
+                string s when s.Contains("control panel") => "Opening Control Panel...",
+                string s when s.Contains("event viewer") => "Opening Event Viewer...",
+                string s when s.Contains("problem reports") => "Opening Problem Reports...",
+                string s when s.Contains("system information") => "Opening System Information...",
+                string s when s.Contains("directx") => "Opening DirectX...",
+                string s when s.Contains("ipconfig") => "Showing Network Configuration...",
+                string s when s.Contains("performance monitor") => "Opening Performance Monitor...",
+                string s when s.Contains("resource monitor") => "Opening Resource Monitor...",
+                string s when s.Contains("disk check") => "Starting Disk Check...",
+                //Default not found case
+                _ => "I'm not sure how to respond to that. Could you please rephrase? or Type Help"
+            };
 
 
         }
@@ -171,7 +169,7 @@ namespace WpfApp1
                 Arguments = "/c chkdsk",//opens disk check
                 Verb = "runas",//admin
                 UseShellExecute = true,
-            
+
             };
             try
             {
@@ -189,14 +187,16 @@ namespace WpfApp1
                 FileName = "resmon.exe",
                 UseShellExecute = true
             };
-            try { 
-                Process.Start(startInfo); 
+            try
+            {
+                Process.Start(startInfo);
             }
-            catch (Exception ex) { 
+            catch (Exception ex)
+            {
 
-                Console.WriteLine($"Error: {ex.Message}"); 
+                Console.WriteLine($"Error: {ex.Message}");
             }
-           
+
         }
 
         private void openPerformance()
@@ -206,12 +206,14 @@ namespace WpfApp1
                 FileName = "perfmon.exe",
                 UseShellExecute = true
             };
-            try { 
-                Process.Start(startInfo); 
+            try
+            {
+                Process.Start(startInfo);
             }
 
-            catch (Exception ex) { 
-                Console.WriteLine($"Error: {ex.Message}"); 
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
             try
@@ -237,7 +239,7 @@ namespace WpfApp1
             try
             {
                 var process = Process.Start(startInfo);
-           
+
             }
             catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
         }
