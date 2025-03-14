@@ -159,6 +159,96 @@ namespace WpfApp1
             }
         }
 
-       
+        private void Scan_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
+                ScanFile(filePath);
+            }
+
+
+        }
+
+        private void ScanFile(string filePath)//actual filescan
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/c \"\"C:\\Program Files\\Windows Defender\\MpCmdRun.exe\" -Scan -ScanType 3 -File {filePath}\"",//microsft defender scan
+                RedirectStandardOutput = true,//redirects output to messagebox
+                UseShellExecute = false,
+                CreateNoWindow = true//so I dont have to see it
+            };
+
+            if(!File.Exists(filePath))
+            {
+                System.Windows.MessageBox.Show("File not found", "Error");
+                return;
+            }
+
+            //Error cases for different file types
+
+            if (filePath.Contains(".pdf"))
+            {
+                System.Windows.MessageBox.Show("File is a pdf, cannot scan", "Error");
+                return;
+            }
+
+            if(filePath.Contains(".docx"))
+            {
+                System.Windows.MessageBox.Show("File is a word document, cannot scan", "Error");
+                return;
+            }
+
+            if (filePath.Contains(".xlsx"))
+            {
+                System.Windows.MessageBox.Show("File is an excel document, cannot scan", "Error");
+                return;
+            }
+
+            if (filePath.Contains(".pptx"))
+            {
+                System.Windows.MessageBox.Show("File is a powerpoint document, cannot scan", "Error");
+                return;
+            }
+
+            if (filePath.Contains(".txt"))
+            {
+                System.Windows.MessageBox.Show("File is a text document, cannot scan", "Error");
+                return;
+            }
+
+            if (filePath.Contains(".jpg"))
+            {
+                System.Windows.MessageBox.Show("File is a jpg, cannot scan", "Error");
+                return;
+            }
+
+            if (filePath.Contains(".png"))
+            {
+                System.Windows.MessageBox.Show("File is a png, cannot scan", "Error");
+                return;
+            }
+
+            if(filePath.Contains(".webp"))
+            {
+                System.Windows.MessageBox.Show("File is a webp, cannot scan", "Error");
+                return;
+            }
+
+            if (filePath.Contains(".mp4"))
+            {
+                System.Windows.MessageBox.Show("File is a mp4, cannot scan", "Error");
+                return;
+            }
+
+            Process process = new Process { StartInfo = psi };//starts process
+            process.Start();
+            process.WaitForExit();
+
+            string result = process.StandardOutput.ReadToEnd();
+            System.Windows.MessageBox.Show(result, "Scan Results");//results of scanning
+        }
     }
 }

@@ -64,6 +64,7 @@
             <Button Content="Details" Width="100" Style="{StaticResource FlatButtonStyle}" Click="Test_Click"/>
             <Button Content="Open" Width="100" Style="{StaticResource FlatButtonStyle}" Click="File_open_Click"/>
             <Button Content="Delete" Width="100" Style="{StaticResource FlatButtonStyle}" Click="Delete_Click"/>
+            <Button Content="Scan File" Width="100" Style="{StaticResource FlatButtonStyle}" Click="Scan_Click"/>
         </StackPanel>
         <TextBox x:Name="Searchtext" HorizontalAlignment="Left" Margin="93,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FF716D6D" Foreground="#FFF3EBEB"/>
         <Label Content="Enter File Name&#xD;&#xA;" HorizontalAlignment="Left" Margin="104,0,0,0" VerticalAlignment="Top" Width="120" Foreground="White" Height="26"/>
