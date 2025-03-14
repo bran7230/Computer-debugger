@@ -23,8 +23,6 @@ namespace WpfApp1
 
             // Add a welcome message from the AI
             _messages.Add(new ChatMessage { Sender = "AI", Text = "Hello! How can I help you today?(Type help for options)" });
-
-
         }
 
         // Click event for the Send button
