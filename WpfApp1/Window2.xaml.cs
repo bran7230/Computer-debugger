@@ -48,7 +48,26 @@ namespace WpfApp1
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show(dir.FullName + "\\" + listBox.SelectedItem.ToString());
+
+
+            if (listBox.SelectedItem == null)
+            {
+                System.Windows.MessageBox.Show("Please select a file from the list.");
+            }
+
+            if (listBox.SelectedItem != null)
+            {
+                try
+                {
+                    System.Windows.MessageBox.Show(dir.FullName + "\\" + listBox.SelectedItem.ToString());
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show("Error opening file: " + ex.Message);
+                }
+            }
+
+
 
         }
 
@@ -161,6 +180,10 @@ namespace WpfApp1
 
         private void Scan_Click(object sender, RoutedEventArgs e)
         {
+            if (listBox.SelectedItem == null)
+            {
+                System.Windows.MessageBox.Show("Please select a file from the list.");
+            }
             if (listBox.SelectedItem != null)
             {
                 string filePath = System.IO.Path.Combine(dir.FullName, listBox.SelectedItem.ToString());
@@ -181,7 +204,7 @@ namespace WpfApp1
                 CreateNoWindow = true//so I dont have to see it
             };
 
-            if(!File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
                 System.Windows.MessageBox.Show("File not found", "Error");
                 return;
@@ -195,7 +218,7 @@ namespace WpfApp1
                 return;
             }
 
-            if(filePath.Contains(".docx"))
+            if (filePath.Contains(".docx"))
             {
                 System.Windows.MessageBox.Show("File is a word document, cannot scan", "Error");
                 return;
@@ -231,7 +254,7 @@ namespace WpfApp1
                 return;
             }
 
-            if(filePath.Contains(".webp"))
+            if (filePath.Contains(".webp"))
             {
                 System.Windows.MessageBox.Show("File is a webp, cannot scan", "Error");
                 return;
