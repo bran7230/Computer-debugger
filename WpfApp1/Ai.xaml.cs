@@ -22,7 +22,7 @@ namespace WpfApp1
             MessagesListBox.ItemsSource = _messages;// Bind the ListBox to the collection
 
             // Add a welcome message from the AI
-            _messages.Add(new ChatMessage { Sender = "AI", Text = "Hello! How can I help you today?(Type help for options)" });
+            _messages.Add(new ChatMessage { Sender = "AI", Text = "Type help for options" });
         }
 
         // Click event for the Send button
@@ -133,7 +133,7 @@ namespace WpfApp1
             //Return a response based on the user input Switch cases, add more Future Me if you want to add more commands
             return input switch
             {
-                string s when s.Contains("help") => "Want to try Basic Commands(Type Basic Commands) or Advanced?",
+                string s when s.Contains("help") => "Want to try Basic Commands(Type Basic Commands) or Advanced?(Type Advanced)",
                 string s when s.Contains("basic commands") => "Full system scan, Ram scan, Device Manager, Disk Cleanup, Temp file clean, System information, Performance Monitor,",
                 string s when s.Contains("full System scan") => "Ok, I will start the scan",
                 string s when s.Contains("thank you") => "You're welcome! Feel free to ask if you need more help.",
@@ -152,6 +152,7 @@ namespace WpfApp1
                 string s when s.Contains("performance monitor") => "Opening Performance Monitor...",
                 string s when s.Contains("resource monitor") => "Opening Resource Monitor...",
                 string s when s.Contains("disk check") => "Starting Disk Check...",
+
                 //Default not found case
                 _ => "I'm not sure how to respond to that. Could you please rephrase? or Type Help"
             };
@@ -165,12 +166,13 @@ namespace WpfApp1
                 Arguments = "/c chkdsk",//opens disk check
                 Verb = "runas",//admin
                 UseShellExecute = true,
-
             };
+
             try
             {
                 Process.Start(startInfo);
             }
+   
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
